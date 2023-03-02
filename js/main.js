@@ -14,7 +14,7 @@ palindromeCheckBtn.addEventListener('click',
         // verifico se il valore è corretto ed elimino gli spazi e caratteri speciali
         let verifiedPalindrome = userPalindrome.replace(/[^a-zA-Z0-9 ]/g, '');
         verifiedPalindrome = verifiedPalindrome.toLowerCase();
-        if ( verifiedPalindrome === '') {
+        if ( verifiedPalindrome === '' && verifiedPalindrome.length < 3) {
             // valore non corretto
             palindromeLogDom.innerHTML = 'Inserisci un valore valido';
         } else {
