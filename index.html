@@ -20,10 +20,22 @@
         </div>
         <div class="container">
             <h2>Pari e Dispari</h2>
-            <p>Digita un numero da 1 a 5 e clicca su "pari" o "dispari" per giocare</p>
-            <input type="number" id="userNumber">
-            <button type="button" class="btn" id="evenBetBtn">Pari</button>
-            <button type="button" class="btn" id="oddBetBtn">Dispari</button>
+            <p>Seleziona un numero da 1 a 5 e scommetti su "pari" o "dispari", poi clicca su "Gioca" per giocare</p>
+            <select id="userNumber">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <select id="userBet">
+                <option value="even">Pari</option>
+                <option value="odd">Dispari</option>
+            </select>
+            <button type="button" class="btn" id="startBtn">Gioca</button>
+            <div id="roundLog">
+
+            </div>
         </div>
     </main>
 

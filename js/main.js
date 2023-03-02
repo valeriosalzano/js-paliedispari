@@ -57,56 +57,51 @@ function palindromeCheck (userInput){
 
 // Pari e Dispari
 
+const startBtn = document.getElementById('startBtn');
+const roundLogDom = document.getElementById('roundLog');
+
 // L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
-const evenBetBtn = document.getElementById('evenBetBtn');
+const userBetDom = document.getElementById('userBet');
 const userNumberDom = document.getElementById('userNumber');
 
-evenBetBtn.addEventListener('click',
-    function(){
-        let userBet = 'even';
-        let userNumber = parseInt(userNumberDom.value);
-        gameRound(userNumber,userBet);
-    }
-)
 
-const oddBetBtn = document.getElementById('oddBetBtn');
-oddBetBtn.addEventListener('click',
+startBtn.addEventListener('click',
     function(){
-        let userBet = 'odd';
-        let userNumber = parseInt(userNumberDom.value);
-        gameRound(userNumber,userBet);
-    }
-)
+        // Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
+        let pcNumber = randomNumber(1,5);
 
-// Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
-function pcNumber (){
-    return Math.floor(Math.random()*5)+1;
-}
-// Sommiamo i due numeri
-// Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
-function EvenOrOddSum (a, b){
-    alert(`Hai scelto ${a}. Il computer ha scelto ${b}.`)
-    let sum = a + b;
-    if (sum % 2 == 0){
-        return 'even'
-    } else {
-        return 'odd'
-    }
-}
-// Dichiariamo chi ha vinto.
-function gameRound (userNumber, userBet ){
-    if (userNumber > 0 && userNumber < 6 ){
-        // numero valido
-        let winningBet = EvenOrOddSum(userNumber,pcNumber());
-        if(userBet == winningBet){
-            // vittoria dell'utente 
-            alert(`Complimenti! Hai vinto!`);
+        // Sommiamo i due numeri
+        let userNumber = parseInt(userNumberDom.value);
+        let sum = userNumber + pcNumber;
+
+        // Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
+        let evenSum = isEven(sum);
+
+        // Dichiariamo chi ha vinto.
+        let userBet = userBetDom.value;
+
+        roundLogDom.innerHTML = `Il pc ha giocato ${pcNumber}. La somma è ${sum}.<br>`
+
+        if (evenSum && userBet == 'even'){
+            roundLogDom.innerHTML += 'Complimenti, la somma è pari. Hai vinto!';
+        } else if (!evenSum && userBet == 'odd'){
+            roundLogDom.innerHTML += 'Complimenti, la somma è dispari. Hai vinto!';
         } else {
-            // vittoria del pc 
-            alert(`Peccato! Ritenta.`);
-        }
-    } else {
-        // numero non valido
-        alert('Scrivi un numero valido.');
+            roundLogDom.innerHTML += 'Peccato, hai perso. Ritenta!';
+        };
     }
+)
+
+// funzione per generare un numero random 
+function randomNumber (min, max){
+    return Math.floor(Math.random()*(max-min+1)) + min;
+}
+
+// funzione per verificare se un numero è pari
+function isEven (number){
+    let even = false;
+    if (number % 2 == 0){
+        even = true;
+    }
+    return even;
 }
