@@ -9,14 +9,17 @@
 </head>
     
 <body>
-    <h1>Pali & Dispari</h1>
     <main>
+        <h1>Pali & Dispari</h1>
         <div class="container">
             <h2>Palindroma</h2>
-            <label for="userPalindrome">Verifica se si tratta di un palindromo.</label>
+            <label for="userPalindrome">Verifica se si tratta di un palindromo. (i caratteri speciali verranno ignorati)</label>
             <input type="text" id="userPalindrome" placeholder="parola o frase da verificare">
             <button type="button" class="btn" id="palindromeCheckBtn">Verifica</button>
             <button type="button" class="btn" id="palindromeResetBtn">Cancella campo</button>
+            <div id="palindromeLog">
+
+            </div>
         </div>
         <div class="container">
             <h2>Pari e Dispari</h2>

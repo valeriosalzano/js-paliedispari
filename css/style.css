@@ -8,6 +8,11 @@ html {
     background-color: black;
     color: white;
 }
+h1 {
+    width: 100%;
+    align-self: center;
+    font-size: 3rem;
+}
 
 h1, h2 {
     text-align: center;
@@ -15,15 +20,16 @@ h1, h2 {
 }
 
 main {
-    padding: 3rem;
+    padding: 1rem;
 }
 
 .container {
     text-align: center;
     padding: 2rem;
+    border-top: 1px solid white;
 }
 
-.container input {
+.container input, .container select {
     display: block;
     max-width: 500px;
     width: 100%;
@@ -47,4 +53,19 @@ main {
 .btn:hover{
     background-color: lightgray;
     color: black;
+}
+
+@media all and (min-width: 992px) {
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100vh;
+    }
+
+    main > .container {
+        width: 45%;
+        border: 3px solid white;
+        border-radius: 2rem;
+        margin: 0 auto;
+    }
 }

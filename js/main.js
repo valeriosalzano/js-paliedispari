@@ -1,26 +1,29 @@
 
 // Palindroma
+const palindromeLogDom = document.getElementById('palindromeLog');
 
 // Chiedere all’utente di inserire una parola
 const userPalindromeDom = document.getElementById("userPalindrome");
+
 
 // richiamo la funzione al click del pulsante
 const palindromeCheckBtn = document.getElementById('palindromeCheckBtn');
 palindromeCheckBtn.addEventListener('click', 
     function(){
         const userPalindrome = userPalindromeDom.value;
-        // verifico se il valore è corretto
-        if (userPalindrome.length < 2 || userPalindrome.trim() === '') {
+        // verifico se il valore è corretto ed elimino gli spazi e caratteri speciali
+        verifiedPalindrome = userPalindrome.replace(/[^a-zA-Z0-9 ]/g, '');
+        if ( verifiedPalindrome === '') {
             // valore non corretto
-            alert('Inserisci un valore valido')
+            palindromeLogDom.innerHTML = 'Inserisci un valore valido';
         } else {
             // verifica superata, invoco la funzione
             let isPalindrome = palindromeCheck(userPalindrome);
             // controllo l'esito fornito dalla funzione
             if (isPalindrome){
-                alert(` Esatto! "${userPalindrome}" è un palindromo.`);
+                palindromeLogDom.innerHTML = `Corretto! "${verifiedPalindrome}" è un palindromo.`;
             } else {
-                alert(` Peccato, "${userPalindrome}" non è un palindromo.`);
+                palindromeLogDom.innerHTML = ` Peccato, "${verifiedPalindrome}" non è un palindromo.`;
             }
         }    
     }
@@ -36,15 +39,11 @@ palindromeResetBtn.addEventListener('click',
 
 // Creare una funzione per capire se la parola inserita è palindroma
 function palindromeCheck (userInput){
-    // elimino gli spazi
-    let userInputTrimmed = userInput.trim();
-    // calcolo la lunghezza
-    let userInputLength = userInputTrimmed.length;
     // verifico che le lettere siano uguali partendo da sinistra o destra fino al centro
     let isPalindrome = true;
     let i=0;
-    while (isPalindrome && i< Math.ceil(userInputLength / 2)){
-        if (userInputTrimmed[i] != userInputTrimmed[userInputLength - i -1]){
+    while (isPalindrome && i< Math.ceil(userInput.length / 2)){
+        if (userInput[i] != userInput[userInput.length - i -1]){
             // verifica non superata, esco dal ciclo
             isPalindrome = false;
         }
