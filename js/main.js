@@ -12,13 +12,14 @@ palindromeCheckBtn.addEventListener('click',
     function(){
         const userPalindrome = userPalindromeDom.value;
         // verifico se il valore è corretto ed elimino gli spazi e caratteri speciali
-        verifiedPalindrome = userPalindrome.replace(/[^a-zA-Z0-9 ]/g, '');
+        let verifiedPalindrome = userPalindrome.replace(/[^a-zA-Z0-9 ]/g, '');
+        verifiedPalindrome = verifiedPalindrome.toLowerCase();
         if ( verifiedPalindrome === '') {
             // valore non corretto
             palindromeLogDom.innerHTML = 'Inserisci un valore valido';
         } else {
             // verifica superata, invoco la funzione
-            let isPalindrome = palindromeCheck(userPalindrome);
+            let isPalindrome = palindromeCheck(verifiedPalindrome);
             // controllo l'esito fornito dalla funzione
             if (isPalindrome){
                 palindromeLogDom.innerHTML = `Corretto! "${verifiedPalindrome}" è un palindromo.`;

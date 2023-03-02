@@ -55,6 +55,11 @@ main {
     color: black;
 }
 
+#palindromeLog, #roundLog {
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
 @media all and (min-width: 992px) {
     main {
         display: flex;
